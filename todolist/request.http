@@ -15,15 +15,34 @@ Content-Type: application/json
     "password": "123"
 }
 
-###
+####
 POST http://localhost:5000/api/posts
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRmMDU5ZTBmZjZlYzIyYTg0OWNiYTciLCJpYXQiOjE2MjUyMjg4Nzh9.cryVywhiJO0Ln5N6GTaIyHYa5b2bCfixZDhru_61sGo
 
+{
+    "title": "CSS",
+    "description": "learn CSS",
+    "url": "w3c.com",
+    "status": "LEARNING"
+}
+
+###
+GET http://localhost:5000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRmMDU5ZTBmZjZlYzIyYTg0OWNiYTciLCJpYXQiOjE2MjUyMjk2NzR9.z4XnBIjjF9SXWOrZfLNgulVCbuHrwucjTzOxBwVUE3w
+
+### 
+PUT http://localhost:5000/api/posts/60df066abd2bda2ce4f22788
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRmMDU5ZTBmZjZlYzIyYTg0OWNiYTciLCJpYXQiOjE2MjUyMjk2NzR9.z4XnBIjjF9SXWOrZfLNgulVCbuHrwucjTzOxBwVUE3w
 
 {
-    "title": "fourth post",
-    "description": "test english",
-    "url": "toeic24.com",
-    "status": "LEARNED"
+    "title": "HTML CSS",
+    "description": "Learned HTML",
+    "url": "youtube.com",
+    "status": "LEARNING"
 }
+
+###
+DELETE http://localhost:5000/api/posts/60df0a7e628da822d4ba88a7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRmMDU5ZTBmZjZlYzIyYTg0OWNiYTciLCJpYXQiOjE2MjUyMjk2NzR9.z4XnBIjjF9SXWOrZfLNgulVCbuHrwucjTzOxBwVUE3w
