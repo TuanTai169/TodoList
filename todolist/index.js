@@ -1,9 +1,16 @@
+require('dotenv').config()
+
 const express = require('express')
 const mongoose = require('mongoose')
 
+
+const authRouter = require('./routes/auth')
+const postRouter = require('./routes/post')
+
 const connectDB = async () =>{
     try {
-        await mongoose.connect("mongodb+srv://react:react@fristappmearn.jwhoj.mongodb.net/FistAppMERN?retryWrites=true&w=majority",{
+        await mongoose.connect(
+            `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@fristappmearn.jwhoj.mongodb.net/FistAppMERN?retryWrites=true&w=majority`,{
             useCreateIndex: true,
             useNewUrlParser: true,
             useUnifiedTopology: true,
@@ -19,10 +26,11 @@ const connectDB = async () =>{
 
 connectDB()
 const app = express()
+app.use(express.json())
 
-app.get('/', function(req, res){
-    res.send("Hello world")
-});
+app.use('/api/auth', authRouter)
+app.use('/api/posts', postRouter)
+
 
 const POST = 5000;
 
