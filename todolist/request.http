@@ -1,1 +1,29 @@
-GET http://localhost:5000
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username" : "nhi",
+    "password" : "123"
+}
+
+###
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "nhi",
+    "password": "123"
+}
+
+###
+POST http://localhost:5000/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRmMDU5ZTBmZjZlYzIyYTg0OWNiYTciLCJpYXQiOjE2MjUyMjg4Nzh9.cryVywhiJO0Ln5N6GTaIyHYa5b2bCfixZDhru_61sGo
+
+
+{
+    "title": "fourth post",
+    "description": "test english",
+    "url": "toeic24.com",
+    "status": "LEARNED"
+}
