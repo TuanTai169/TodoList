@@ -4,19 +4,19 @@ import Form from "react-bootstrap/Form";
 import { Link, useHistory } from "react-router-dom";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import AlertMessage from "../layout/AlertMessage";
 
 const LoginForm = () => {
   //Context
   const { loginUser } = useContext(AuthContext);
-
-  //Router
-  const history = useHistory();
 
   //Local state
   const [loginForm, setLoginForm] = useState({
     username: "",
     password: "",
   });
+
+  const [alert, setAlert] = useState(null);
 
   const { username, password } = loginForm;
 
@@ -32,8 +32,10 @@ const LoginForm = () => {
     try {
       const loginData = await loginUser(loginForm);
       if (loginData.success) {
-        history.push("/dashboard");
+        //history.push("/dashboard");
       } else {
+        setAlert({ type: "danger", message: loginData.message });
+        setTimeout(() => setAlert(null), 3000);
       }
     } catch (error) {
       console.log(error);
@@ -43,6 +45,8 @@ const LoginForm = () => {
   return (
     <>
       <Form onSubmit={login}>
+        <AlertMessage info={alert} />
+
         <Form.Group className="form-text-box">
           <Form.Control
             type="text"
