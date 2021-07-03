@@ -28,6 +28,12 @@
 .landing-inner p {
 	color: white;
 }
+.form-text-box {
+	margin: 10px;
+}
+.login-button{
+	margin: 10px;
+}
 
 .spinner-container {
 	position: absolute;
