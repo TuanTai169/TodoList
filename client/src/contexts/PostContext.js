@@ -6,6 +6,8 @@ import {
   POSTS_LOADED_FAIL,
   ADD_POST,
   DELETE_POST,
+  UPDATE_POST,
+  FIND_POST,
 } from "./constants";
 import axios from "axios";
 
@@ -14,11 +16,14 @@ export const PostContext = createContext();
 const PostContextProvider = ({ children }) => {
   //state
   const [postState, dispatch] = useReducer(postReducer, {
+    post: null,
     posts: [],
     postsLoading: true,
   });
 
   const [showAddPostModal, setShowAddPostModal] = useState(false);
+  const [showUpdatePostModal, setShowUpdatePostModal] = useState(false);
+
   const [showToast, setShowToast] = useState({
     show: false,
     message: "",
@@ -40,6 +45,14 @@ const PostContextProvider = ({ children }) => {
     }
   };
 
+  //Find Post clicked when user update
+  const findPost = (postId) => {
+    const post = postState.posts.find((post) => post._id === postId);
+    dispatch({
+      type: FIND_POST,
+      payload: post,
+    });
+  };
   //Add Post
   const addPost = async (newPost) => {
     try {
@@ -67,16 +80,38 @@ const PostContextProvider = ({ children }) => {
     }
   };
 
+  //Update Post
+  const updatePost = async (updatedPost) => {
+    try {
+      const response = await axios.put(
+        `${apiUrl}/posts/${updatedPost._id}`,
+        updatedPost
+      );
+      if (response.data.success) {
+        dispatch({ type: UPDATE_POST, payload: response.data.post });
+        return response.data;
+      }
+    } catch (error) {
+      return error.response.data
+        ? error.response.data
+        : { success: false, message: "Sever error" };
+    }
+  };
+
   //Post context
   const postContextData = {
     postState,
     getPosts,
     showAddPostModal,
     setShowAddPostModal,
+    showUpdatePostModal,
+    setShowUpdatePostModal,
     addPost,
     showToast,
     setShowToast,
     deletePost,
+    updatePost,
+    findPost,
   };
 
   return (
