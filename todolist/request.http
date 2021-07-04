@@ -2,7 +2,7 @@ POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-    "username" : "nhi",
+    "username" : "nhi2",
     "password" : "123"
 }
 
@@ -18,18 +18,19 @@ Content-Type: application/json
 ####
 POST http://localhost:5000/api/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRmMDU5ZTBmZjZlYzIyYTg0OWNiYTciLCJpYXQiOjE2MjUyMjg4Nzh9.cryVywhiJO0Ln5N6GTaIyHYa5b2bCfixZDhru_61sGo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRlZGUxZmJhNTI1YTNiM2NhNGQ5YTIiLCJpYXQiOjE2MjUzOTMwNzB9.PIj0N70R9_BjCC6j7vrZ7L0JncTDvIkEWAzhdZHGMgY
+
 
 {
-    "title": "CSS",
-    "description": "learn CSS",
-    "url": "w3c.com",
-    "status": "LEARNING"
+    "title": "MongoDB",
+    "description": "learn MongoDB",
+    "url": "w3school.com",
+    "status": "TO LEARN"
 }
 
 ###
 GET http://localhost:5000/api/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRmMDU5ZTBmZjZlYzIyYTg0OWNiYTciLCJpYXQiOjE2MjUyMjk2NzR9.z4XnBIjjF9SXWOrZfLNgulVCbuHrwucjTzOxBwVUE3w
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRlZGUxZmJhNTI1YTNiM2NhNGQ5YTIiLCJpYXQiOjE2MjUzOTMwNzB9.PIj0N70R9_BjCC6j7vrZ7L0JncTDvIkEWAzhdZHGMgY
 
 ### 
 PUT http://localhost:5000/api/posts/60df066abd2bda2ce4f22788
@@ -46,5 +47,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRmM
 ###
 DELETE http://localhost:5000/api/posts/60df0a7e628da822d4ba88a7
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRmMDU5ZTBmZjZlYzIyYTg0OWNiYTciLCJpYXQiOjE2MjUyMjk2NzR9.z4XnBIjjF9SXWOrZfLNgulVCbuHrwucjTzOxBwVUE3w
-
 
